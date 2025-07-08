@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:padding="14dp"
+    android:padding="25dp"
+    android:layoutDirection="ltr"
+    android:fitsSystemWindows="true"
     tools:context=".ui.Settings.SettingsFragment">
 
     <com.google.android.material.textview.MaterialTextView

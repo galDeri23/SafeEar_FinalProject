@@ -1,5 +1,6 @@
 package com.example.safeear_finalproject.ui.home;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,7 +19,7 @@ import com.example.safeear_finalproject.databinding.FragmentHomeBinding;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    private boolean isMonitoringActive = true;
+    private boolean isMonitoringActive = false;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -30,15 +31,16 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        isMonitoringActive = isMonitoringServiceRunning();
         updateMonitoringUI();
 
         binding.buttonPause.setOnClickListener(v -> {
-            isMonitoringActive = !isMonitoringActive;
-
-            if (isMonitoringActive) {
-                requireActivity().startService(new Intent(requireContext(), MonitoringService.class));
-            } else {
+            if (isMonitoringServiceRunning()) {
                 requireActivity().stopService(new Intent(requireContext(), MonitoringService.class));
+                isMonitoringActive = false;
+            } else {
+                requireActivity().startService(new Intent(requireContext(), MonitoringService.class));
+                isMonitoringActive = true;
             }
 
             updateMonitoringUI();
@@ -62,13 +64,23 @@ public class HomeFragment extends Fragment {
     private void updateMonitoringUI() {
         if (isMonitoringActive) {
             binding.textMonitoringStatus.setText("Monitoring is ACTIVE");
-            binding.buttonPause.setText("Pause Monitoring");
+            binding.buttonPause.setText("PAUSE MONITORING");
             binding.buttonPause.setBackgroundTintList(getResources().getColorStateList(android.R.color.holo_red_dark));
         } else {
             binding.textMonitoringStatus.setText("Monitoring is PAUSED");
-            binding.buttonPause.setText("Resume Monitoring");
+            binding.buttonPause.setText("RESUME MONITORING");
             binding.buttonPause.setBackgroundTintList(getResources().getColorStateList(android.R.color.holo_blue_dark));
         }
+    }
+
+    private boolean isMonitoringServiceRunning() {
+        ActivityManager manager = (ActivityManager) requireActivity().getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (MonitoringService.class.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

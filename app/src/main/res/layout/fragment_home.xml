@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:padding="14dp">
+    android:fitsSystemWindows="true"
+    android:layoutDirection="ltr"
+    android:padding="25dp">
 
     <View
         android:id="@+id/mic_circle"
