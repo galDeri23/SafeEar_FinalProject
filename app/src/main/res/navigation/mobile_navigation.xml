@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.safeear_finalproject.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_setting"
+        android:name="com.example.safeear_finalproject.ui.Settings.SettingsFragment"
+        android:label="@string/title_Settings"
+        tools:layout="@layout/fragment_settings" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.safeear_finalproject.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_report"
+        android:name="com.example.safeear_finalproject.ui.Reports.ReportsFragment"
+        android:label="@string/title_Reports"
+        tools:layout="@layout/fragment_reports" />
 </navigation>
