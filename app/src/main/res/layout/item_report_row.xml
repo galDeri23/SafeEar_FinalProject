@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layoutDirection="ltr"
     android:padding="8dp">
 
     <androidx.cardview.widget.CardView
@@ -11,8 +12,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
         app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="#FAFAFA"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -23,33 +26,24 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/text_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Recording Time: 09:15"
+                android:text="Recording Time: 10:15 AM"
                 android:textSize="16sp"
-                android:textColor="@color/black" />
-
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/text_emotion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Detected Emotion: Angry"
-                android:textSize="16sp"
-                android:textColor="#D32F2F"
-                android:textStyle="bold"
-                android:layout_marginTop="4dp" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/text_transcript"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Transcript: The child asked for help but received no response."
+                android:text="I told you not to do that again."
                 android:textSize="14sp"
+                android:maxLines="3"
+                android:ellipsize="end"
                 android:textColor="#555555"
                 android:layout_marginTop="8dp" />
 
