@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layoutDirection="ltr"
-    android:padding="8dp">
+    android:layout_margin="8dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_report_item"
@@ -15,7 +15,7 @@
         android:layout_marginTop="8dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="6dp"
-        app:cardBackgroundColor="#FAFAFA"
+        app:cardBackgroundColor="@color/gray"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">

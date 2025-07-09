@@ -19,7 +19,7 @@ import com.example.safeear_finalproject.databinding.FragmentHomeBinding;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    private boolean isMonitoringActive = false;
+    private boolean isMonitoringActive = true;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -31,7 +31,7 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        isMonitoringActive = isMonitoringServiceRunning();
+
         updateMonitoringUI();
 
         binding.buttonPause.setOnClickListener(v -> {
